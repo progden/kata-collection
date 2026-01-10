@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LightGridTest {
-    private LightGrid lightGrid1;
+    private LightGrid lightGrid;
     private InstructionReader reader = new InstructionReader();
     private InstructionExecutor instructionExecutor;
 
     @BeforeEach
     void setUp() {
-        lightGrid1 = new LightGridVer1();
+        lightGrid = new LightGridVer1();
         reader.load();
         instructionExecutor = new InstructionExecutor();
     }
@@ -34,8 +34,8 @@ class LightGridTest {
      */
     @Test
     public void testExecuteInstuctions() {
-        instructionExecutor.execute(lightGrid1, reader.instructions);
-        int lightsOn = lightGrid1.light();
+        instructionExecutor.execute(lightGrid, reader.instructions);
+        int lightsOn = lightGrid.light();
         assertThat(lightsOn).isEqualTo(230022);
     }
 }
