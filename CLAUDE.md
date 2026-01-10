@@ -9,6 +9,7 @@ Multi-module Maven 專案，包含多個 Kata 練習：
 | 模組 | 說明 |
 |-----|------|
 | bowling | 保齡球計分 Kata - TDD 練習 |
+| christmas-lights | 聖誕燈飾 Kata - TDD 練習 |
 
 ## 共用建置指令
 
