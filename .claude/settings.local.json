@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew test:*)",
+      "Bash(./gradlew:*)",
+      "Bash(./gradlew clean test:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(powershell.exe -Command \"./gradlew.bat test 2>&1\")",
+      "Bash(./mvnw test:*)",
+      "Bash(./mvnw clean test:*)"
+    ]
+  }
+}
