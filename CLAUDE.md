@@ -6,10 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Multi-module Maven 專案，用於 TDD 方式的 Code Kata 練習。
 
-| 模組 | 說明 |
-|-----|------|
-| bowling | 保齡球計分 Kata |
-| christmas-lights | 聖誕燈飾 Kata |
+| 模組                     | 說明                  |
+|------------------------|---------------------|
+| bowling                | 保齡球計分 Kata          |
+| christmas-lights       | 聖誕燈飾 Kata           |
 | GildedRose-Refactoring | Gilded Rose 重構 Kata |
 
 ## 建置指令
@@ -62,3 +62,17 @@ kata-bowling/
 2. 根目錄 `pom.xml` 的 `<modules>` 加入模組名稱
 3. 建立模組 `pom.xml` (繼承 parent)
 4. 建立模組 `CLAUDE.md`
+
+## 測試覆蓋率 (JaCoCo)
+
+GildedRose-Refactoring 模組已整合 JaCoCo，執行測試後自動產生覆蓋率報告。
+
+```bash
+# 執行測試並產生覆蓋率報告
+./mvnw clean test -pl GildedRose-Refactoring
+
+# 報告位置: GildedRose-Refactoring/target/site/jacoco/jacoco.xml
+```
+
+**注意**：Maven 本地倉庫路徑不可包含中文字元，否則 JaCoCo agent 無法載入。如遇問題，在 `~/.m2/settings.xml` 設定
+`<localRepository>` 至純英文路徑，例如 `d:/maven-repo`。
