@@ -15,6 +15,7 @@
     <modules>
         <module>bowling</module>
         <module>christmas-lights</module>
+        <module>GildedRose-Refactoring</module>
     </modules>
 
     <properties>
