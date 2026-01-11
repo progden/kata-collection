@@ -35,6 +35,35 @@ class GildedRose {
         abstract void update(Item item);
     }
 
+    class ConjuredItemWorkflow extends ItemWorkflow {
+        ConjuredItemWorkflow(ItemWorkflow next) {
+            super(next);
+        }
+
+        private static boolean isConjured(Item item) {
+            return item.name.startsWith("Conjured");
+        }
+
+        @Override
+        void update(Item item) {
+            if (isConjured(item)) {
+                processQuality(item, -1);
+                processQuality(item, -1);
+
+                decreaseSellIn(item, -1);
+
+                if (isOutofSellIn(item)) {
+                    processQuality(item, -1);
+                    processQuality(item, -1);
+                }
+            } else {
+                if (super.next != null) {
+                    next.update(item);
+                }
+            }
+        }
+    }
+
     class AgedBrieItemWorkflow extends ItemWorkflow {
         AgedBrieItemWorkflow(ItemWorkflow next) {
             super(next);
@@ -140,7 +169,11 @@ class GildedRose {
 
     // updateQuality 介面不可以修改！！！！
     public void updateQuality() {
-        ItemWorkflow workflow = new AgedBrieItemWorkflow(new SulfurasItemWorkflow(new BackstagePassItemWorkflow(new NormalItemWorkflow(null))));
+        ItemWorkflow workflow = new ConjuredItemWorkflow(
+                new AgedBrieItemWorkflow(
+                        new SulfurasItemWorkflow(
+                                new BackstagePassItemWorkflow(
+                                        new NormalItemWorkflow(null)))));
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
             workflow.update(item);
