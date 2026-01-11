@@ -26,6 +26,7 @@
         <assertj.version>3.22.0</assertj.version>
         <mockito.version>4.3.1</mockito.version>
         <vavr.version>0.10.4</vavr.version>
+        <jacoco.version>0.8.14</jacoco.version>
     </properties>
 
     <dependencyManagement>
@@ -78,8 +79,34 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.1.2</version>
                     <configuration>
-                        <argLine>-Dfile.encoding=UTF-8</argLine>
+                        <argLine>@{argLine} -Dfile.encoding=UTF-8</argLine>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                    <executions>
+                        <execution>
+                            <id>prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <formats>
+                                    <format>XML</format>
+                                </formats>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
