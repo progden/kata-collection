@@ -37,3 +37,48 @@ https://kata-log.rocks/gilded-rose-kata
 Items 屬性設為靜態，我們會為您處理）。
 
 需要澄清的是，物品的品質永遠不可能超過 50，但是「薩弗拉斯」是一件傳說物品，因此它的品質為 80，並且永遠不會改變。
+
+## 重構策略
+
+採用 **責任鍊模式 (Chain of Responsibility)** 來區分各種商品的處理邏輯。
+
+### 類別結構
+
+```
+ItemWorkflow (abstract)
+├── ConjuredItemWorkflow
+├── AgedBrieItemWorkflow
+├── SulfurasItemWorkflow
+├── BackstagePassItemWorkflow
+└── NormalItemWorkflow
+```
+
+### 處理鏈順序
+
+```
+Item → Conjured → AgedBrie → Sulfuras → BackstagePass → NormalItem
+```
+
+### 設計優點
+
+- **單一職責**：每個 Workflow 只負責一種商品類型的邏輯
+- **開放封閉**：新增商品類型只需加入新的 Workflow，不需修改現有程式碼
+- **易於測試**：各 Workflow 可獨立單元測試
+
+### Workflow 職責
+
+| Workflow | 商品 | 邏輯 |
+|----------|------|------|
+| ConjuredItemWorkflow | Conjured* | 品質下降速度 x2 |
+| AgedBrieItemWorkflow | Aged Brie | 品質隨時間增加 |
+| SulfurasItemWorkflow | Sulfuras | 傳奇物品，不變化 |
+| BackstagePassItemWorkflow | Backstage passes | 品質依剩餘天數變化，過期歸零 |
+| NormalItemWorkflow | 其他商品 | 預設處理邏輯（兜底）|
+
+### 共用方法 (ItemWorkflow)
+
+| 方法 | 說明 |
+|------|------|
+| `isOutofSellIn(item)` | 判斷是否已過期 (sellIn < 0) |
+| `decreaseSellIn(item, i)` | 減少售賣期限 |
+| `processQuality(item, i)` | 處理品質變化 (0-50 限制) |
