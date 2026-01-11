@@ -293,46 +293,46 @@ class GildedRoseTest {
 
     }
 
-//    @Nested
-//    @DisplayName("「召喚」(Conjured)物品的品質下降速度是一般物品的兩倍")
-//    class ConjuredItemsQualityDegradesTwiceAsFast {
-//
-//        @Test
-//        @DisplayName("Conjured物品在保質期內品質下降速度是一般物品的兩倍")
-//        void conjuredItemQualityDegradesTwiceAsFast() {
-//            initItem("Conjured Mana Cake", 10, 20);
-//
-//            app.updateQuality();
-//            sellInAndQualityShouldBe(9, 18);
-//
-//            app.updateQuality();
-//            sellInAndQualityShouldBe(8, 16);
-//        }
-//
-//        @Test
-//        @DisplayName("Conjured物品在過期後品質下降速度是一般物品的四倍")
-//        void conjuredItemQualityDegradesFourTimesAsFastAfterSellByDate() {
-//            initItem("Conjured Mana Cake", 0, 20);
-//
-//            app.updateQuality();
-//            sellInAndQualityShouldBe(-1, 16);
-//
-//            app.updateQuality();
-//            sellInAndQualityShouldBe(-2, 12);
-//        }
-//
-//        @Test
-//        @DisplayName("Conjured物品品質降到零後不再下降")
-//        void conjuredItemQualityStopsAtZero() {
-//            initItem("Conjured Mana Cake", 5, 2);
-//
-//            app.updateQuality();
-//            sellInAndQualityShouldBe(4, 0);
-//
-//            app.updateQuality();
-//            sellInAndQualityShouldBe(3, 0);
-//        }
-//
-//    }
-//
+    @Nested
+    @DisplayName("「召喚」(Conjured)物品的品質下降速度是一般物品的兩倍")
+    class ConjuredItemsQualityDegradesTwiceAsFast {
+
+        @Test
+        @DisplayName("Conjured物品在保質期內品質下降速度是一般物品的兩倍")
+        void conjuredItemQualityDegradesTwiceAsFast() {
+            initItem("Conjured Mana Cake", 10, 20);
+
+            app.updateQuality();
+            sellInAndQualityShouldBe(9, 18);
+
+            app.updateQuality();
+            sellInAndQualityShouldBe(8, 16);
+        }
+
+        @Test
+        @DisplayName("Conjured物品在過期後品質下降速度是一般物品的四倍")
+        void conjuredItemQualityDegradesFourTimesAsFastAfterSellByDate() {
+            initItem("Conjured Mana Cake", 0, 20);
+
+            app.updateQuality();
+            sellInAndQualityShouldBe(-1, 16);
+
+            app.updateQuality();
+            sellInAndQualityShouldBe(-2, 12);
+        }
+
+        @Test
+        @DisplayName("Conjured物品品質降到零後不再下降")
+        void conjuredItemQualityStopsAtZero() {
+            initItem("Conjured Mana Cake", 5, 2);
+
+            app.updateQuality();
+            sellInAndQualityShouldBe(4, 0);
+
+            app.updateQuality();
+            sellInAndQualityShouldBe(3, 0);
+        }
+
+    }
+
 }
