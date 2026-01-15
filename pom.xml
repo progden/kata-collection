@@ -16,17 +16,20 @@
         <module>bowling</module>
         <module>christmas-lights</module>
         <module>GildedRose-Refactoring</module>
+        <module>game-of-life</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.8.2</junit.version>
         <assertj.version>3.22.0</assertj.version>
         <mockito.version>4.3.1</mockito.version>
         <vavr.version>0.10.4</vavr.version>
         <jacoco.version>0.8.14</jacoco.version>
+        <!-- argLine 預設為空，JaCoCo 執行時會覆蓋此值 -->
+        <argLine></argLine>
     </properties>
 
     <dependencyManagement>
@@ -68,8 +71,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.11.0</version>
                     <configuration>
-                        <source>21</source>
-                        <target>21</target>
+                        <source>17</source>
+                        <target>17</target>
                         <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
