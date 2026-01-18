@@ -17,6 +17,7 @@
         <module>christmas-lights</module>
         <module>GildedRose-Refactoring</module>
         <module>game-of-life</module>
+        <module>fizzbuzz</module>
     </modules>
 
     <properties>
