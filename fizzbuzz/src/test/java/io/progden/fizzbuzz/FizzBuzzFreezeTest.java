@@ -13,13 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p>
  * 測試命名格式: given_[場景]_when_[動作]_then_[預期結果]
  */
-@DisplayName("FizzBuzz")
-class FizzBuzzTest {
+@DisplayName("FizzBuzzFreeze")
+class FizzBuzzFreezeTest {
     FizzBuzz fizzBuzz;
 
     @BeforeEach
     void setUp() {
-        fizzBuzz = new FizzBuzzNormal();
+        fizzBuzz = new FizzBuzzFreeze();
     }
 
     @Nested
@@ -35,38 +35,38 @@ class FizzBuzzTest {
     }
 
     @Nested
-    @DisplayName("RULE 2: 3 的倍數，應該直接顯示Fizz")
+    @DisplayName("RULE 2: 3 的倍數，應該直接顯示Kuksa!")
     class MultipleOfThree {
         @ParameterizedTest()
         @ValueSource(ints = {3, 6, 9, 12})
-        @DisplayName("given_{0}_when_playFizzBuzz_then_return_Fizz")
+        @DisplayName("given_{0}_when_playFizzBuzz_then_return_Kuksa!")
         void test(int input) {
             String result = fizzBuzz.fizzBuzz(input);
-            assertThat(result).isEqualTo("Fizz");
+            assertThat(result).isEqualTo("Kuksa!");
         }
     }
 
     @Nested
-    @DisplayName("RULE 3: 5 的倍數，應該直接顯示Buzz")
+    @DisplayName("RULE 3: 5 的倍數，應該直接顯示Sauna!")
     class MultipleOfFive {
         @ParameterizedTest()
         @ValueSource(ints = {5, 10, 20, 25})
-        @DisplayName("given_{0}_when_playFizzBuzz_then_return_Buzz")
+        @DisplayName("given_{0}_when_playFizzBuzz_then_return_Sauna!")
         void test(int input) {
             String result = fizzBuzz.fizzBuzz(input);
-            assertThat(result).isEqualTo("Buzz");
+            assertThat(result).isEqualTo("Sauna!");
         }
     }
 
     @Nested
-    @DisplayName("同時是 3 和 5 的倍數，應該直接顯示FizzBuzz")
+    @DisplayName("同時是 3 和 5 的倍數，應該直接顯示Dip!")
     class MultipleOfThreeAndFive {
         @ParameterizedTest()
         @ValueSource(ints = {15, 30, 45, 60})
-        @DisplayName("given_{0}_when_playFizzBuzz_then_return_FizzBuzz")
+        @DisplayName("given_{0}_when_playFizzBuzz_then_return_Dip!")
         void test(int input) {
             String result = fizzBuzz.fizzBuzz(input);
-            assertThat(result).isEqualTo("FizzBuzz");
+            assertThat(result).isEqualTo("Dip!");
         }
     }
 }
