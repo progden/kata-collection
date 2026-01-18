@@ -18,6 +18,7 @@
         <module>GildedRose-Refactoring</module>
         <module>game-of-life</module>
         <module>fizzbuzz</module>
+        <module>gossiping-bus-drivers</module>
     </modules>
 
     <properties>
