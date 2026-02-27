@@ -16,6 +16,9 @@
         <module>bowling</module>
         <module>christmas-lights</module>
         <module>GildedRose-Refactoring</module>
+        <module>string-calculator</module>
+        <module>roman-numerals</module>
+        <module>blackjack</module>
         <module>game-of-life</module>
         <module>fizzbuzz</module>
         <module>gossiping-bus-drivers</module>
